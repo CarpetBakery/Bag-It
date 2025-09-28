@@ -66,7 +66,7 @@ function AddBagDialog({ bags, setBags }) {
 	return (
 		<>
 			<Button variant="contained" onClick={openDialog}>
-				+ Add Bag
+				+ Create Bag
 			</Button>
 			<Dialog
 				open={open}
@@ -76,7 +76,7 @@ function AddBagDialog({ bags, setBags }) {
 				// aria-describedby="alert-dialog-description"
 			>
 				<DialogTitle id="alert-dialog-title">
-					Add a New Bag.
+					Create a New Bag
 				</DialogTitle>
 
 				<DialogContent>

@@ -7,8 +7,11 @@ import {
 	ListItemButton,
 	ListSubheader,
 	ListItemText,
+	Box,
+	Typography,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router";
 import { api, Backend } from "../../api";
 import { Url } from "../../constants";
 
@@ -53,29 +56,33 @@ function ItemList({ items, deleteItem }) {
 			let item = items[i];
 
 			result.push(
-				<ListItem
-					sx={{
-						animation: "fadeIn 0.2s ease-in-out",
-						// outline: "1px solid"
-					}}
-				>
-					<ListItemAvatar sx={{ marginRight: "10px" }}>
-						<img
-							width={64}
-							height={64}
-							src={actualItem.image}
-							alt={actualItem.name}
-						/>
-					</ListItemAvatar>
-					<ListItemText primary={actualItem.name} />
-					<Button
-						color="secondary"
-						variant="outlined"
-						onClick={(e) => deleteItem(e, item.id)}
-					>
-						Delete
-					</Button>
-				</ListItem>
+				<Box>
+					<Link to="/item" state={{ ...actualItem }}>
+						<ListItem
+							sx={{
+								animation: "fadeIn 0.2s ease-in-out",
+								// outline: "1px solid"
+							}}
+						>
+							<ListItemAvatar sx={{ marginRight: "10px" }}>
+								<img
+									width={64}
+									height={64}
+									src={actualItem.image}
+									alt={actualItem.name}
+								/>
+							</ListItemAvatar>
+							<ListItemText primary={actualItem.name} />
+							<Button
+								color="secondary"
+								variant="outlined"
+								onClick={(e) => deleteItem(e, item.id)}
+							>
+								Delete
+							</Button>
+						</ListItem>
+					</Link>
+				</Box>
 			);
 		}
 

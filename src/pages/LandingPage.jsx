@@ -168,6 +168,7 @@ function LandingPage() {
 							alignItems="center"
 							xs={12}
 							md={6}
+							marginLeft={7}
 						>
 							<Box
 								sx={{
@@ -224,6 +225,7 @@ function LandingPage() {
 						display="flex"
 						alignItems="flex-start"
 						marginTop="-50px"
+						marginLeft={7}
 						sx={{
 							animation: "fadeIn 0.8s ease-in-out",
 						}}
@@ -322,102 +324,112 @@ function LandingPage() {
 									key={item.id}
 									sx={{ display: "flex" }}
 								>
-									<Card
-										variant="contained"
-										sx={(theme) => ({
-											display: "flex",
-											flexDirection: "column",
-											justifyContent: "space-between",
-											flexGrow: 1,
-											bgcolor: "background.default",
-
-											borderRadius: (theme.vars || theme)
-												.shape.borderRadius,
-											outline: "6px solid",
-											backgroundSize: "cover",
-											boxShadow:
-												"0 0 24px 12px hsla(210, 100%, 25%, 0.2)",
-											outlineColor:
-												"hsla(220, 20%, 42%, 0.1)",
-											borderColor: (theme.vars || theme)
-												.palette.grey[700],
-										})}
-									>
-										<CardContent
-											sx={{
-												padding: "20px",
-												flexGrow: 1,
-											}}
-										>
-											<Typography variant="h5">
-												{item.name ||
-													`Clothing Item #${item.id}`}
-											</Typography>
-											<Grid2
-												container
-												alignItems="center"
-												justifyContent="center"
-												display="flex"
-												sx={{
-													marginTop: "10px",
-													height: "250px",
-												}}
-											>
-												<Grid2 item>
-													<Box
-														component="img"
-														src={item.image}
-														alt={
-															item.name ||
-															`Clothing Item #${item.id}`
-														}
-														sx={{
-															maxWidth: "100%",
-															maxHeight: "100%",
-															width: "auto",
-															height: "auto",
-															objectFit:
-																"contain",
-															display: "block",
-															margin: "0 auto",
-															padding: "2px",
-														}}
-													/>
-												</Grid2>
-											</Grid2>
-											<Typography
-												variant="body1"
-												gutterBottom
-												marginTop={1}
-												sx={{ color: "text.secondary" }}
-											>
-												{/* {item.description || "No description available."} */}
-											</Typography>
-										</CardContent>
-										<Box
-											sx={{
+									<Link to="/item" state={{ ...item }}>
+										<Card
+											variant="contained"
+											sx={(theme) => ({
 												display: "flex",
-												justifyContent: "flex-end",
-												padding: "10px 20px",
-											}}
+												flexDirection: "column",
+												justifyContent: "space-between",
+												flexGrow: 1,
+												bgcolor: "background.default",
+
+												borderRadius: (
+													theme.vars || theme
+												).shape.borderRadius,
+												outline: "6px solid",
+												backgroundSize: "cover",
+												boxShadow:
+													"0 0 24px 12px hsla(210, 100%, 25%, 0.2)",
+												outlineColor:
+													"hsla(220, 20%, 42%, 0.1)",
+												borderColor: (
+													theme.vars || theme
+												).palette.grey[700],
+											})}
 										>
-											<Button
-												variant="outlined"
+											<CardContent
 												sx={{
-													// justifyContent: "flex-end",
-													marginTop: 18,
+													padding: "20px",
+													flexGrow: 1,
 												}}
 											>
-												<Link
-													to="/item"
-													state={{ ...item }}
+												{/* <span className="productPageLink"></span> */}
+												<Typography variant="h5">
+													{item.name ||
+														`Clothing Item #${item.id}`}
+												</Typography>
+												<Grid2
+													container
+													alignItems="center"
+													justifyContent="center"
+													display="flex"
+													sx={{
+														marginTop: "10px",
+														height: "250px",
+													}}
 												>
-													<span className="productPageLink"></span>
-												</Link>
-												More Info
-											</Button>
-										</Box>
-									</Card>
+													<Grid2 item>
+														<Box
+															component="img"
+															src={item.image}
+															alt={
+																item.name ||
+																`Clothing Item #${item.id}`
+															}
+															sx={{
+																maxWidth:
+																	"100%",
+																maxHeight:
+																	"100%",
+																width: "auto",
+																height: "auto",
+																objectFit:
+																	"contain",
+																display:
+																	"block",
+																margin: "0 auto",
+																padding: "2px",
+															}}
+														/>
+													</Grid2>
+												</Grid2>
+												<Typography
+													variant="body1"
+													gutterBottom
+													marginTop={1}
+													sx={{
+														color: "text.secondary",
+													}}
+												>
+													{/* {item.description || "No description available."} */}
+												</Typography>
+											</CardContent>
+											<Box
+												sx={{
+													display: "flex",
+													justifyContent: "flex-end",
+													padding: "10px 20px",
+												}}
+											>
+												<Button
+													variant="outlined"
+													sx={{
+														// justifyContent: "flex-end",
+														marginTop: 18,
+													}}
+												>
+													<Link
+														to="/item"
+														state={{ ...item }}
+													>
+														<span className="productPageLink"></span>
+													</Link>
+													More Info
+												</Button>
+											</Box>
+										</Card>
+									</Link>
 								</Grid2>
 							))}
 
@@ -563,7 +575,7 @@ function LandingPage() {
 			</Box>
 
 			{/* Testimonials Section */}
-			
+
 			<Footer />
 		</Box>
 	);
