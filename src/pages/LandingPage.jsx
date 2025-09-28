@@ -414,7 +414,7 @@ function LandingPage() {
 												>
 													<span className="productPageLink"></span>
 												</Link>
-												See more
+												More Info
 											</Button>
 										</Box>
 									</Card>
