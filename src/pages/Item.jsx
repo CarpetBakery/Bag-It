@@ -17,6 +17,8 @@ import {
 	Avatar,
 	ListItemText,
 	TextField,
+	Typography,
+	Grid2,
 } from "@mui/material";
 import TopBar from "../components/TopBar";
 import TopContainer from "../components/TopContainer";
@@ -134,7 +136,9 @@ function NewBagDialog({
 				</Button>
 				<Button
 					loading={loading}
-					onClick={(e) => confirmNewBagPressed(e, newBagName, newBagDesc)}
+					onClick={(e) =>
+						confirmNewBagPressed(e, newBagName, newBagDesc)
+					}
 					variant="contained"
 				>
 					Confirm
@@ -205,8 +209,7 @@ export default function Item() {
 
 		// Create the bag
 		const bag = await Backend.createNewBag(newBagName, newBagDesc);
-		if (bag == null)
-		{
+		if (bag == null) {
 			alert("Please enter a valid name and description.");
 			setLoading(false);
 			return;
@@ -223,140 +226,114 @@ export default function Item() {
 		<Box>
 			<TopContainer>
 				<TopBar />
-				<Container maxWidth="lg">
-					<div className="ItemContainer">
-						{product.image ? (
-							<img
-								src={product.image}
-								alt={product.name}
-								className="Image"
-							/>
-						) : (
-							<p>No image available</p>
-						)}
-
-						<div className="ItemInfo">
-							<h1 className="Name">
-								{product.name || "Unknown Product"}
-							</h1>
-							<p className="description">
-								{product.description ||
-									"No description available."}
-							</p>
-						</div>
-
-						<div className="tagList">
-							<h2 className="tag">
-								Size:{" "}
-								{{
-									0: "Extra Small",
-									1: "Small",
-									2: "Medium",
-									3: "Large",
-									4: "Extra Large",
-								}[product.size] || "N/A"}
-							</h2>
-							<h2 className="tag">
-								Type:{" "}
-								{{
-									0: "Shorts",
-									1: "Pants",
-									2: "T-Shirt",
-									3: "Dress",
-									4: "Shoes",
-									5: "Hat",
-									6: "Hoodie",
-									7: "Shirt",
-								}[product.type] || "N/A"}
-							</h2>
-							<h2 className="tag">
-								Colour: {product.color || "N/A"}
-							</h2>
-							<h2 className="tag">
-								Gender:{" "}
-								{{ 0: "Male", 1: "Female", 2: "Unisex" }[
-									product.gender
-								] || "N/A"}
-							</h2>
-							<h2 className="tag">
-								Brand: {product.brand || "N/A"}
-							</h2>
-						</div>
-						<p>Item ID: {product.id}</p>
-
-						{loggedIn && (
-							<div className="addButtons">
-								<div className="existing">
-									<Button
-										className="addToExistingButton"
-										variant="contained"
-										onClick={addExistingBagPressed}
+				<Container
+					sx={{
+						// marginTop:"40px"
+						animation: "fadeIn 0.4s ease-in-out",
+					}}
+				>
+					{product.image && (
+						<Box marginTop="100px" marginLeft="50px">
+							<Grid2
+								container
+								alignItems="center"
+								justifyContent="center"
+								// marginTop="100px"
+								// marginLeft="50px"
+								display="flex"
+							>
+								<Grid2
+									item
+									sx={{
+										display: "flex",
+									}}
+								>
+									<Box
+									// marginLeft={"-250px"}
 									>
-										Add Me to Existing Bag!
-									</Button>
-
-									{/* Existing bag dialog */}
-									<Dialog
-										open={openExistingDialog}
-										onClose={() =>
-											setOpenExistingDialog(false)
-										}
+										<img
+											src={product.image}
+											alt={product.name}
+											width={"450px"}
+										/>
+									</Box>
+									<Box
+										sx={{
+											marginTop: "20px",
+											marginLeft: "40px",
+										}}
 									>
-										<DialogTitle>Select a Bag</DialogTitle>
-										<DialogContent>
-											<p>
-												Here you can select an existing
-												bag to add this product to.
-											</p>
-											<ExistingBagList
-												bags={bags}
-												product={product}
-											/>
-										</DialogContent>
-										<DialogActions>
-											<Button
-												loading={loading}
-												onClick={() =>
-													setOpenExistingDialog(false)
-												}
-											>
-												Cancel
-											</Button>
-											{/* <Button
-												loading={loading}
-												onClick={
-													confirmExistingBagPressed
-												}
-												variant="contained"
-											>
-												Confirm
-											</Button> */}
-										</DialogActions>
-									</Dialog>
-								</div>
+										<Typography variant="h3">
+											{product.name}
+										</Typography>
+										<Box
+											sx={{
+												paddingTop: 2,
+												// paddingRight: 10,
+											}}
+										>
+											<Typography>
+												{product.description}
+											</Typography>
+											{loggedIn && (
+												<Box
+													sx={{
+														marginTop: "20px",
+														marginBottom: "20px",
+													}}
+												>
+													<Button
+														variant="contained"
+														onClick={
+															addExistingBagPressed
+														}
+														className="addToExistingButton"
+													>
+														Add to Bag
+													</Button>
+												</Box>
+											)}
+										</Box>
+									</Box>
+									<Box></Box>
+								</Grid2>
+							</Grid2>
+						</Box>
+					)}
 
-								<div className="new">
-									<Button
-										className="addToNewButton"
-										variant="contained"
-										onClick={addNewBagPressed}
-									>
-										Add Me to New Bag!
-									</Button>
-
-									{/* New bag dialog */}
-									<NewBagDialog
-										setOpenNewDialog={setOpenNewDialog}
-										openNewDialog={openNewDialog}
-										confirmNewBagPressed={
-											confirmNewBagPressed
-										}
-										loading={loading}
-									/>
-								</div>
+					{loggedIn && (
+						<div className="addButtons">
+							<div className="existing">
+								{/* Existing bag dialog */}
+								<Dialog
+									open={openExistingDialog}
+									onClose={() => setOpenExistingDialog(false)}
+								>
+									<DialogTitle>Select a Bag</DialogTitle>
+									<DialogContent>
+										<p>
+											Select an existing bag to add this
+											product to.
+										</p>
+										<ExistingBagList
+											bags={bags}
+											product={product}
+										/>
+									</DialogContent>
+									<DialogActions>
+										<Button
+											loading={loading}
+											onClick={() =>
+												setOpenExistingDialog(false)
+											}
+										>
+											Cancel
+										</Button>
+									</DialogActions>
+								</Dialog>
 							</div>
-						)}
-					</div>
+						</div>
+					)}
 				</Container>
 			</TopContainer>
 		</Box>
