@@ -24,6 +24,7 @@ import TopBar from "../components/TopBar";
 import TopContainer from "../components/TopContainer";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import { Backend } from "../api";
+import Footer from "../components/Footer";
 
 function ExistingBagList({ bags, product }) {
 	const [isLoading, setIsLoading] = useState(false);
@@ -249,7 +250,6 @@ export default function Item() {
 									}}
 								>
 									<Box
-									// marginLeft={"-250px"}
 									>
 										<img
 											src={product.image}
@@ -266,34 +266,83 @@ export default function Item() {
 										<Typography variant="h3">
 											{product.name}
 										</Typography>
-										<Box
-											sx={{
-												paddingTop: 2,
-												// paddingRight: 10,
-											}}
-										>
+										<Box sx={{ paddingTop: 2 }}>
 											<Typography>
 												{product.description}
 											</Typography>
-											{loggedIn && (
-												<Box
-													sx={{
-														marginTop: "20px",
-														marginBottom: "20px",
-													}}
-												>
-													<Button
-														variant="contained"
-														onClick={
-															addExistingBagPressed
-														}
-														className="addToExistingButton"
-													>
-														Add to Bag
-													</Button>
-												</Box>
-											)}
 										</Box>
+										{/* Product Details Section */}
+										<Box
+											sx={{
+												marginTop: 2,
+												marginBottom: 3,
+												// background: "#181824",
+												borderRadius: 2,
+												boxShadow: "0 2px 12px rgba(0,0,0,0.18)",
+												padding: 2,
+												paddingLeft: 0,
+												maxWidth: 400,
+												color: "#e0e0e0",
+												// border: "1px solid #23233a",
+											}}
+										>
+											<Typography variant="h6" fontWeight="bold" sx={{}} gutterBottom>
+												Product Details
+											</Typography>
+											<Grid2 container spacing={1}>
+												<Grid2 item xs={6}><Typography variant="body2" sx={{ color: "#b0b0b0" }}>Size:</Typography></Grid2>
+												<Grid2 item xs={6}><Typography variant="body2" fontWeight="bold" sx={{ color: "#fff" }}>{
+													{
+														0: "Extra Small",
+														1: "Small",
+														2: "Medium",
+														3: "Large",
+														4: "Extra Large",
+													}[product.size] || "N/A"
+												}</Typography></Grid2>
+												<Grid2 item xs={6}><Typography variant="body2" sx={{ color: "#b0b0b0" }}>Type:</Typography></Grid2>
+												<Grid2 item xs={6}><Typography variant="body2" fontWeight="bold" sx={{ color: "#fff" }}>{
+													{
+														0: "Shorts",
+														1: "Pants",
+														2: "T-Shirt",
+														3: "Dress",
+														4: "Shoes",
+														5: "Hat",
+														6: "Hoodie",
+														7: "Shirt",
+													}[product.type] || "N/A"
+												}</Typography></Grid2>
+												<Grid2 item xs={6}><Typography variant="body2" sx={{ color: "#b0b0b0" }}>Color:</Typography></Grid2>
+												<Grid2 item xs={6}><Typography variant="body2" fontWeight="bold" sx={{ color: "#fff" }}>{product.color || "N/A"}</Typography></Grid2>
+												<Grid2 item xs={6}><Typography variant="body2" sx={{ color: "#b0b0b0" }}>Gender:</Typography></Grid2>
+												<Grid2 item xs={6}><Typography variant="body2" fontWeight="bold" sx={{ color: "#fff" }}>{
+													{ 0: "Male", 1: "Female", 2: "Unisex" }[product.gender] || "N/A"
+												}</Typography></Grid2>
+												<Grid2 item xs={6}><Typography variant="body2" sx={{ color: "#b0b0b0" }}>Brand:</Typography></Grid2>
+												<Grid2 item xs={6}><Typography variant="body2" fontWeight="bold" sx={{ color: "#fff" }}>{product.brand || "N/A"}</Typography></Grid2>
+												<Grid2 item xs={6}><Typography variant="body2" sx={{ color: "#b0b0b0" }}>Product ID:</Typography></Grid2>
+												<Grid2 item xs={6}><Typography variant="body2" fontWeight="bold" sx={{ color: "#fff" }}>{product.id}</Typography></Grid2>
+											</Grid2>
+										</Box>
+										{loggedIn && (
+											<Box
+												sx={{
+													marginTop: "20px",
+													marginBottom: "20px",
+												}}
+											>
+												<Button
+													variant="contained"
+													onClick={
+														addExistingBagPressed
+													}
+													className="addToExistingButton"
+												>
+													Add to Bag
+												</Button>
+											</Box>
+										)}
 									</Box>
 									<Box></Box>
 								</Grid2>
@@ -335,6 +384,7 @@ export default function Item() {
 						</div>
 					)}
 				</Container>
+				<Footer />
 			</TopContainer>
 		</Box>
 	);
