@@ -17,6 +17,8 @@ import {
 	Avatar,
 	ListItemText,
 	TextField,
+	Typography,
+	Grid2,
 } from "@mui/material";
 import TopBar from "../components/TopBar";
 import TopContainer from "../components/TopContainer";
@@ -224,24 +226,114 @@ export default function Item() {
 		<Box>
 			<TopContainer>
 				<TopBar />
-				<Container maxWidth="lg">
-					<Box
-						sx={{
-							animation: "fadeIn 0.4s ease-in-out",
-						}}
-					>
-						<div className="ItemContainer">
-							{product.image ? (
-								<img
-									src={product.image}
-									alt={product.name}
-									className="Image"
-								/>
-							) : (
-								<p>No image available</p>
-							)}
+				<Container
+					sx={{
+						// marginTop:"40px"
+						animation: "fadeIn 0.4s ease-in-out",
+					}}
+				>
+					{product.image && (
+						<Box marginTop="100px" marginLeft="50px">
+							<Grid2
+								container
+								alignItems="center"
+								justifyContent="center"
+								// marginTop="100px"
+								// marginLeft="50px"
+								display="flex"
+							>
+								<Grid2
+									item
+									sx={{
+										display: "flex",
+									}}
+								>
+									<Box
+									// marginLeft={"-250px"}
+									>
+										<img
+											src={product.image}
+											alt={product.name}
+											width={"450px"}
+										/>
+									</Box>
+									<Box
+										sx={{
+											marginTop: "20px",
+											marginLeft: "40px",
+										}}
+									>
+										<Typography variant="h3">
+											{product.name}
+										</Typography>
+										<Box
+											sx={{
+												paddingTop: 2,
+												// paddingRight: 10,
+											}}
+										>
+											<Typography>
+												{product.description}
+											</Typography>
+											{loggedIn && (
+												<Box
+													sx={{
+														marginTop: "20px",
+														marginBottom: "20px",
+													}}
+												>
+													<Button
+														variant="contained"
+														onClick={
+															addExistingBagPressed
+														}
+														className="addToExistingButton"
+													>
+														Add to Bag
+													</Button>
+												</Box>
+											)}
+										</Box>
+									</Box>
+									<Box></Box>
+								</Grid2>
+							</Grid2>
+						</Box>
+					)}
+
+					{loggedIn && (
+						<div className="addButtons">
+							<div className="existing">
+								{/* Existing bag dialog */}
+								<Dialog
+									open={openExistingDialog}
+									onClose={() => setOpenExistingDialog(false)}
+								>
+									<DialogTitle>Select a Bag</DialogTitle>
+									<DialogContent>
+										<p>
+											Select an existing bag to add this
+											product to.
+										</p>
+										<ExistingBagList
+											bags={bags}
+											product={product}
+										/>
+									</DialogContent>
+									<DialogActions>
+										<Button
+											loading={loading}
+											onClick={() =>
+												setOpenExistingDialog(false)
+											}
+										>
+											Cancel
+										</Button>
+									</DialogActions>
+								</Dialog>
+							</div>
 						</div>
-					</Box>
+					)}
 				</Container>
 			</TopContainer>
 		</Box>
