@@ -15,7 +15,7 @@ import React, { useEffect, useState } from "react";
 import { keyframes } from "@emotion/react";
 import { styled, alpha } from "@mui/material/styles";
 import WhatshotIcon from "@mui/icons-material/Whatshot";
-import "../styles/Landing.css"
+import "../styles/Landing.css";
 
 import bagitLogo from "../assets/bagit_shadow.svg";
 import TopBar from "../components/TopBar";
@@ -40,8 +40,7 @@ const StyledBox = styled(Box)(({ theme }) => ({
 }));
 
 function LandingPage() {
-
-const scrollText = keyframes`
+	const scrollText = keyframes`
   0% { left: 100%; }
   100% { left: -100%; }
 `;
@@ -318,7 +317,6 @@ const scrollText = keyframes`
 							}}
 						>
 							{items.map((item) => (
-						
 								<Grid2
 									size={{ xs: 12, sm: 6, md: 4 }}
 									key={item.id}
@@ -348,7 +346,7 @@ const scrollText = keyframes`
 										<CardContent
 											sx={{
 												padding: "20px",
-												flexGrow: 1
+												flexGrow: 1,
 											}}
 										>
 											<Typography variant="h5">
@@ -360,22 +358,29 @@ const scrollText = keyframes`
 												alignItems="center"
 												justifyContent="center"
 												display="flex"
-												sx={{ marginTop: "10px" , height: "250px" }}
+												sx={{
+													marginTop: "10px",
+													height: "250px",
+												}}
 											>
 												<Grid2 item>
 													<Box
 														component="img"
 														src={item.image}
-														alt={item.name || `Clothing Item #${item.id}`}
+														alt={
+															item.name ||
+															`Clothing Item #${item.id}`
+														}
 														sx={{
 															maxWidth: "100%",
 															maxHeight: "100%",
 															width: "auto",
 															height: "auto",
-															objectFit: "contain", 
+															objectFit:
+																"contain",
 															display: "block",
 															margin: "0 auto",
-															padding: "2px"
+															padding: "2px",
 														}}
 													/>
 												</Grid2>
@@ -414,7 +419,6 @@ const scrollText = keyframes`
 										</Box>
 									</Card>
 								</Grid2>
-					
 							))}
 
 							<Container
@@ -465,254 +469,186 @@ const scrollText = keyframes`
 										<br />
 										<br />
 										Enjoy the sights! Enjoy the sounds!
-
-<Grid2 container spacing={4} marginTop={4}>
-  {[
-	{ icon: "💡", title: "Innovative Tech", desc: "Smart fits powered by smart design." },
-	{ icon: "🛍️", title: "Curated Styles", desc: "Hand-picked looks updated daily." },
-	{ icon: "🚀", title: "Fast Delivery", desc: "From screen to street in record time." },
-	{ icon: "🌐", title: "Global Reach", desc: "We deliver style across borders." },
-  ].map((feature, i) => (
-	<Grid2 item xs={12} md={3} key={i}>
-	  <Box textAlign="center">
-		<Typography fontSize="40px">{feature.icon}</Typography>
-		<Typography variant="h6" fontWeight="bold" mt={1}>{feature.title}</Typography>
-		<Typography variant="body2" color="gray">{feature.desc}</Typography>
-	  </Box>
-	</Grid2>
-  ))}
-</Grid2>
-
-
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										We sincerely hope that you continue to
-										shop with us.
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										We truly hope that you never cease
-										shopping with us.
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<br />
-										<Typography
-											component="span"
-											color="secondary"
-											fontWeight="bold"
+										<Grid2
+											container
+											spacing={4}
+											marginTop={4}
 										>
-											Please do not try to stop shopping
-											with us.
-										</Typography>
+											{[
+												{
+													icon: "💡",
+													title: "Innovative Tech",
+													desc: "Smart fits powered by smart design.",
+												},
+												{
+													icon: "🛍️",
+													title: "Curated Styles",
+													desc: "Hand-picked looks updated daily.",
+												},
+												{
+													icon: "🚀",
+													title: "Fast Delivery",
+													desc: "From screen to street in record time.",
+												},
+												{
+													icon: "🌐",
+													title: "Global Reach",
+													desc: "We deliver style across borders.",
+												},
+											].map((feature, i) => (
+												<Grid2
+													item
+													xs={12}
+													md={3}
+													key={i}
+												>
+													<Box textAlign="center">
+														<Typography fontSize="40px">
+															{feature.icon}
+														</Typography>
+														<Typography
+															variant="h6"
+															fontWeight="bold"
+															mt={1}
+														>
+															{feature.title}
+														</Typography>
+														<Typography
+															variant="body2"
+															color="gray"
+														>
+															{feature.desc}
+														</Typography>
+													</Box>
+												</Grid2>
+											))}
+										</Grid2>
 									</Typography>
 								</Box>
 							</Container>
 						</Grid2>
 					)}
-					{(!items || items.length <= 0) &&
-						<Box marginBottom="3000px">
-
-						</Box>
-
-					}
+					{(!items || items.length <= 0) && (
+						<Box marginBottom="3000px"></Box>
+					)}
 				</Container>
-
-				<Box marginTop="200px"></Box>
+				<Box marginTop="-50px"></Box>
 			</Box>
-			
-{/* Scrolling Quote Section */}
-<Box
-  sx={{
-	marginTop: 10,
-	display: "flex",
-	justifyContent: "center",
-	alignItems: "center",
-	height: "100px",
-	overflow: "hidden",
-	position: "relative",
-  }}
->
-  <Typography
-	variant="h4"
-	fontWeight="bold"
-	sx={{
-	  position: "absolute",
-	  animation: `${scrollText} 10s linear infinite`,
-	  whiteSpace: "nowrap",
-	  color: "#00ffc3",
-	}}
-  >
-	Minimalist streetwear. Built different. → Where tech meets texture.
-  </Typography>
-</Box>
 
-
-{/* Testimonials Section */}
-<Box
-	sx={{
-		marginTop: 10,
-		marginBottom: 10,
-		paddingX: 4,
-		paddingY: 6,
-		backgroundColor: "#1b1b1b",
-		borderRadius: "16px",
-	}}
->
-	<Typography
-		variant="h4"
-		fontWeight="bold"
-		textAlign="center"
-		color="white"
-		gutterBottom
-	>
-		What our customers are saying
-	</Typography>
-
-	<Grid2 container spacing={6} marginTop={2}>
-		{[
-			{
-				name: "Sarah T.",
-				role: "Streetwear Enthusiast",
-				img: "https://randomuser.me/api/portraits/women/32.jpg",
-				text: "I’ve never had so many compliments on a hoodie. 🔥",
-			},
-			{
-				name: "@fashionjay",
-				role: "Content Creator",
-				img: "https://randomuser.me/api/portraits/men/12.jpg",
-				text: "Feels premium but doesn't break the bank. Perfect for any outfit.",
-			},
-			{
-				name: "Maya R.",
-				role: "Style Curator",
-				img: "https://randomuser.me/api/portraits/women/68.jpg",
-				text: "Peartech™ always brings quality and innovation. Love the vibe.",
-			},
-		].map((review, index) => (
-			<Grid2 item xs={12} md={4} key={index}>
-				<Box
+			{/* Scrolling Quote Section */}
+			<Box
+				sx={{
+					marginTop: 10,
+					display: "flex",
+					justifyContent: "center",
+					alignItems: "center",
+					height: "100px",
+					overflow: "hidden",
+					position: "relative",
+				}}
+			>
+				<Typography
+					variant="h4"
+					fontWeight="bold"
 					sx={{
-						display: "flex",
-						flexDirection: "column",
-						alignItems: "center",
-						textAlign: "center",
-						padding: 2,
+						position: "absolute",
+						animation: `${scrollText} 10s linear infinite`,
+						whiteSpace: "nowrap",
+						color: "#00ffc3",
 					}}
 				>
-					<Box
-						component="img"
-						src={review.img}
-						alt={review.name}
-						sx={{
-							width: 90,
-							height: 90,
-							borderRadius: "50%",
-							objectFit: "cover",
-							marginBottom: 2,
-							border: "3px solid #fff",
-						}}
-					/>
-					<Typography sx={{ fontStyle: "italic", color: "#ccc" }}>
-						“{review.text}”
-					</Typography>
-					<Typography
-						fontWeight="bold"
-						color="#00ffc3"
-						marginTop={2}
-					>
-						{review.name}
-					</Typography>
-					<Typography variant="body2" color="gray">
-						{review.role}
-					</Typography>
-				</Box>
-			</Grid2>
-		))}
-	</Grid2>
-</Box>
+					Minimalist streetwear. Built different. → Where tech meets
+					texture.
+				</Typography>
+			</Box>
 
-<Footer />
+			{/* Testimonials Section */}
+			<Box
+				sx={{
+					marginTop: 10,
+					marginBottom: 10,
+					paddingX: 4,
+					paddingY: 6,
+					backgroundColor: "#1b1b1b",
+					borderRadius: "16px",
+				}}
+			>
+				<Typography
+					variant="h4"
+					fontWeight="bold"
+					textAlign="center"
+					color="white"
+					gutterBottom
+				>
+					What our customers are saying
+				</Typography>
+
+				<Grid2 container spacing={6} marginTop={2}>
+					{[
+						{
+							name: "Sarah T.",
+							role: "Streetwear Enthusiast",
+							img: "https://randomuser.me/api/portraits/women/32.jpg",
+							text: "I’ve never had so many compliments on a hoodie. 🔥",
+						},
+						{
+							name: "@fashionjay",
+							role: "Content Creator",
+							img: "https://randomuser.me/api/portraits/men/12.jpg",
+							text: "Feels premium but doesn't break the bank. Perfect for any outfit.",
+						},
+						{
+							name: "Maya R.",
+							role: "Style Curator",
+							img: "https://randomuser.me/api/portraits/women/68.jpg",
+							text: "Peartech™ always brings quality and innovation. Love the vibe.",
+						},
+					].map((review, index) => (
+						<Grid2 item xs={12} md={4} key={index}>
+							<Box
+								sx={{
+									display: "flex",
+									flexDirection: "column",
+									alignItems: "center",
+									textAlign: "center",
+									padding: 2,
+								}}
+							>
+								<Box
+									component="img"
+									src={review.img}
+									alt={review.name}
+									sx={{
+										width: 90,
+										height: 90,
+										borderRadius: "50%",
+										objectFit: "cover",
+										marginBottom: 2,
+										border: "3px solid #fff",
+									}}
+								/>
+								<Typography
+									sx={{ fontStyle: "italic", color: "#ccc" }}
+								>
+									“{review.text}”
+								</Typography>
+								<Typography
+									fontWeight="bold"
+									color="#00ffc3"
+									marginTop={2}
+								>
+									{review.name}
+								</Typography>
+								<Typography variant="body2" color="gray">
+									{review.role}
+								</Typography>
+							</Box>
+						</Grid2>
+					))}
+				</Grid2>
+			</Box>
+
+			<Footer />
 		</Box>
 	);
 }
