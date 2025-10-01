@@ -196,7 +196,7 @@ function LandingPage() {
 									Find Your Next Fit.
 								</Typography>
 								<Typography variant="h4" mt={2} color="gray">
-									Fashion Database Excellence.
+									Create your dream clothing wish list
 								</Typography>
 							</Box>
 						</Grid2>
